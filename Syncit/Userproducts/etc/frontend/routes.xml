@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+ 
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Module/etc/module.xsd">
+   <router id="standard">
+        <route id="userproducts" frontName="userproducts">
+            <module name="Syncit_Userproducts" />
+       </route>
+             <route id="addproduct" frontName="addproduct">
+            <module name="Syncit_Userproducts" />
+        </route>
+    </router>
+</config>

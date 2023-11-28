@@ -1,0 +1,8 @@
+<h1>This is preview page</h1>
+<a href="<?php echo $block->getUrl('userproducts/*/index')?>" class="action primary">Go back</a>
+<br>
+
+<h1><b><?php echo $block->getProduct('name')?></b></h1>
+<img id="image-preview" src="/media/images/<?= $block->getImagePreview() ?>" alt="Image Preview" style="max-width: 200px;" />
+<b><span>Price: </span><span><b> $</b></span><?php echo $block->getPrice('price')?></b>
+</div>

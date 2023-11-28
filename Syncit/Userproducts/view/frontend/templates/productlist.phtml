@@ -1,0 +1,86 @@
+<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+<style>
+table {  font-family: arial, sans-serif;  border-collapse: collapse;  width: 100%;  margin-top: 30px;}
+td, th {  border: 1px solid #dddddd;  text-align: left;  padding: 8px;  }
+tr:nth-child(even) { background-color: #dddddd; }
+.post-id{width:2%} .post-name{width:30%}
+.delete {
+  background:#c05e2f;
+  padding:5px;
+  text-align: center;
+  vertical-align: middle;
+}
+.edit {
+  background:#57843c;
+  padding:5px;
+  text-align: center;
+  text-decoration:none;
+  vertical-align: middle;
+}
+.delete {
+  color:white;
+  background: red;
+  box-shadow:none;
+}
+.delete .fa-trash{
+  color:white;
+
+}
+.edit a {
+  color:white;
+ 
+}
+.add {
+  background-color: #eb5202;
+}
+.preview {
+  background-color: #1979c3;
+  padding:5px;
+  text-align: center;
+  text-decoration:none;
+  vertical-align: middle;
+}
+.preview a {
+  color:white;
+}
+</style>
+<a href="<?php echo $block->getUrl('addproduct/*/index')?>" class="action primary">Add new product</a>
+<hr>
+
+<table>
+  <tr>
+    <th class="post-id">Id</th>
+    <th>Image</th>
+    <th class="post-name">Name</th>
+    <th>Price</th>
+    <th>created at</th>
+    <th >Delete</th>
+    <th >Edit</th>
+    <th >Preview</th>
+    
+  </tr>
+    <?php
+    $productCollection = $block->getAllProducts();
+  
+        foreach ($productCollection as $product){
+   
+
+            echo '<tr>
+                    <td>'.$product->getData('entity_id').'</td>
+                    <td><img src="/media/images/'.$block->getImagePath().$product->getData('image').'" width="30px" height="30px"></td>
+                    <td>'.$product->getData('name').'</td>
+                    <td>'.$product->getData('price').'</td>
+                    <td>'.$product->getData('created_at').'</td>
+                    <td class="delete"><a href="'.$block->getUrl('*/*/delete',['id'=>$product->getData('entity_id')]).'" ><i class="fa fa-trash fa-lg" aria-hidden="true"></i>
+                    </a></td>
+                    <td class="edit"><a href="'.$block->getUrl('*/*/edit',['id'=>$product->getData('entity_id')]).'" ><i class="fa fa-pencil-square-o fa-lg" aria-hidden="true"></i>
+                    </a></td>
+                    <td class="preview"><a href="'.$block->getUrl('*/*/preview',['id'=>$product->getData('entity_id')]).'" ><i class="fa fa-eye fa-lg" aria-hidden="true"></i>
+                    </a></td>
+                  </tr>';
+        }
+    
+    ?>
+</table>
+
+

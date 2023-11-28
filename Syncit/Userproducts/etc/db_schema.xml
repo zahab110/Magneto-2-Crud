@@ -1,0 +1,22 @@
+<?xml version="1.0" ?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+	<table name="syncit_userproducts" resource="default" engine="innodb" comment="Syncit Userproducts Table">
+		<column xsi:type="smallint" name="entity_id" padding="6" unsigned="true" nullable="false" identity="true" comment="ID"/>
+		<constraint xsi:type="primary" referenceId="PRIMARY">
+			<column name="entity_id"/>
+		</constraint>
+		<column name="image" nullable="true" xsi:type="text" comment="Image"/>
+		<column name="name" nullable="false" xsi:type="text" comment="Name"/>
+		<column name="price" nullable="false" xsi:type="text" comment="Price"/>
+		<column name="created_at" nullable="false" xsi:type="datetime" comment="Created Date" default="CURRENT_TIMESTAMP"/>
+		<index referenceId="SYNCIT_USERPRODUCTS_IMAGE" indexType="fulltext">
+	        <column name="image"/>
+	    </index>
+	    <index referenceId="SYNCIT_USERPRODUCTS_NAME" indexType="fulltext">
+	        <column name="name"/>
+	    </index>
+	    <index referenceId="SYNCIT_USERPRODUCTS_PRICE" indexType="fulltext">
+	        <column name="price"/>
+	    </index>
+	</table>
+</schema>
